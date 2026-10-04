@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="mb-4">
+    Все посты
+</h1>
+
+
+{% for post in posts.items %}
+
+<div class="card mb-3">
+
+    <div class="card-body">
+
+        <h2>
+            {{ post.title }}
+        </h2>
+
+        <p class="text-muted">
+            Автор: {{ post.author.username }}
+        </p>
+
+        <p class="text-muted">
+            Дата:
+            {{ post.created_at.strftime('%d.%m.%Y') }}
+        </p>
+
+        <p>
+            {{ post.text[:200] }}...
+        </p>
+
+        <a
+            href="{{ url_for('post', post_id=post.id) }}"
+            class="btn btn-primary"
+        >
+            Читать полностью
+        </a>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<p>
+    Пока постов нет.
+</p>
+
+{% endfor %}
+
+
+<!-- ПАГИНАЦИЯ -->
+
+<nav class="mt-4">
+
+    {% if posts.has_prev %}
+
+        <a
+            href="{{ url_for('index', page=posts.prev_num) }}"
+            class="btn btn-secondary"
+        >
+            ← Назад
+        </a>
+
+    {% endif %}
+
+
+    <span class="mx-3">
+        Страница {{ posts.page }}
+    </span>
+
+
+    {% if posts.has_next %}
+
+        <a
+            href="{{ url_for('index', page=posts.next_num) }}"
+            class="btn btn-secondary"
+        >
+            Вперёд →
+        </a>
+
+    {% endif %}
+
+</nav>
+
+
+{% endblock %}

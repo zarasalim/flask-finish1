@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+Новый пост
+{% endblock %}
+
+
+{% block content %}
+
+<h1>
+    Новый пост
+</h1>
+
+
+<form method="POST">
+
+    {{ form.hidden_tag() }}
+
+
+    <div class="mb-3">
+
+        {{ form.title.label(
+            class="form-label"
+        ) }}
+
+        {{ form.title(
+            class="form-control"
+        ) }}
+
+    </div>
+
+
+    <div class="mb-3">
+
+        {{ form.text.label(
+            class="form-label"
+        ) }}
+
+        {{ form.text(
+            class="form-control",
+            rows="8"
+        ) }}
+
+    </div>
+
+
+    {{ form.submit(
+        class="btn btn-success"
+    ) }}
+
+</form>
+
+{% endblock %}

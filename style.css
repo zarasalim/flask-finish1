@@ -1,0 +1,23 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 16px;
+}
